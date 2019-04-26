@@ -1,0 +1,29 @@
+<div class="foot">
+	<div class="copyright">
+		<!-- php:$list = phpok('footnav') -->
+		<!-- loop from=$list.rslist key=$key value=$value id=$list_id -->
+		<a href="{$value.url}" title="{$value.title}" target="{$value.target}">{$value.title}</a>
+		<!-- if $list_id.num == $list_id.total --><br /><!-- else --> | <!-- /if -->
+		<!-- /loop -->
+		{$config.copyright.content}
+	</div>
+</div>
+<!-- php:$list = phpok('kefu') -->
+<!-- if $list.project && $list.rslist -->
+<div class="floatbar">
+	<div class="am-g" style="max-width:1200px;">
+		<!-- loop from=$list.rslist key=$key value=$value -->
+		<!-- if $value.qtype == 'qq' -->
+		<div class="am-u-sm-3 am-u-xx-centered"><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={$value.qq}&site=qq&menu=yes" title="点击这里给我发消息">{$value.title}（QQ：{$value.qq}） <img border="0" src="images/qq.png" alt="点击这里给我发消息" style="width:32px;"/></a></div>
+		<!-- else -->
+		<div class="am-u-sm-3 am-u-xx-centered weixin">
+			<a href="javascript:void(0);">{$value.title}（微信：{$value.weixin}） <img border="0" src="images/weixin.png" alt="鼠标移到这里查看二维码" style="width:32px;"/></a>
+			<div class="wxpic" data-filename="{$value.qrcode.filename}"></div>
+		</div>
+		<!-- /if -->
+		<!-- /loop -->
+	</div>
+</div>
+<div style="height:50px;clear:both;">&nbsp;</div>
+<!-- /if -->
+<!-- include tpl=footer -->

@@ -1,0 +1,123 @@
+<!-- include tpl=head -->
+<script type="text/javascript">
+var input_id = "#{$id}";
+var multi = {$multi ? "1" : "0"};
+var obj = $.dialog.opener;
+function show_list()
+{
+	cid = $.dialog.data('phpok_user_{$id}');
+	if(cid == "undefined" || cid == "0" || cid == ""){
+		return false;
+	}
+	$("li[name=list]").show();
+	var url = get_url("inp")+"&type=user&content="+$.str.encode(cid);
+	$.phpok.json(url,function(data){
+		if(data.status == 'ok'){
+			var lst = data.content;
+			var c = "";
+			for(var i in lst){
+				c += '<li id="user_{$id}_'+lst[i]['id']+'">';
+				c += '<div>'+lst[i]['user']+' <a href="javascript:delete_input(\''+lst[i]['id']+'\');void(0);" title="删除"><img src="images/page_delete.png" border="0" alt="" /></a></div>';
+				c += '</li>';
+				$("#user_"+lst[i]['id']).hide();
+			}
+			$("#selected_list").html(c).show();
+			$.dialog.data("phpok_user_{$id}",cid);
+			return true;
+		}
+		$("#selected_list").hide();
+		$.dialog.removeData("phpok_user_{$id}");
+	});
+}
+function add_input(val)
+{
+	if(multi){
+		var old_c = $.dialog.data('phpok_user_{$id}');
+		var c = (old_c && old_c != 'undefined') ? old_c+","+val : val;
+		var lst = c.split(",");
+		lst = $.unique(lst);
+		$.dialog.data('phpok_user_{$id}',lst.join(","));
+		show_list();
+	}else{
+		obj.$("#{$id}").val(val);
+		obj.action_{$id}_show();
+		$.dialog.removeData("phpok_user_{$id}");
+		$.dialog.close();
+	}
+}
+function delete_input(val)
+{
+	if(multi){
+		var old_c = $.dialog.data('phpok_user_{$id}');
+		if(!old_c){
+			return true;
+		}
+		var lst = old_c.split(",");
+		var n_list = new Array();
+		var m=0;
+		for(var i=0;i<lst.length;i++){
+			if(lst[i] != val){
+				n_list[m] = lst[i];
+				m++;
+			}
+		}
+		if(n_list.length<1){
+			$.dialog.removeData("phpok_user_{$id}");
+		}else{
+			var str = n_list.join(",");
+			$.dialog.data("phpok_user_{$id}",str);
+		}
+	}else{
+		$.dialog.removeData("phpok_user_{$id}");
+	}
+	show_list();
+}
+$(document).ready(function(){
+	if(multi == 1){
+		var new_c = $.dialog.data("phpok_user_{$id}");
+		if(!new_c || new_c == "undefined"){
+			new_c = obj.$(input_id).val();
+		}
+		show_list();
+	}
+});
+</script>
+<!-- if $multi -->
+<div class="list">
+	<ul class="layout">
+		<li>已选择：</li>
+		<div id="selected_list"></div>
+		<div class="clear"></div>
+	</ul>
+</div>
+<!-- /if -->
+<div class="tips">
+	<form method="post" action="{url ctrl=open func=user id=$id/}">
+	<table align="center">
+	<tr>
+		<td><input type="text" name="keywords" id="keywords" value="{$keywords}" /></td>
+		<td><input type="submit" value="搜索" class="submit" /></td>
+	</tr>
+	</table>
+	</form>
+</div>
+<table width="100%" cellpadding="0" cellspacing="0" class="list">
+<tr>
+	<th>会员ID</th>
+	<th class="lft">账号</th>
+	<th class="lft">Email</th>
+	<th class="lft">手机</th>
+	<th>&nbsp;</th>
+</tr>
+<!-- loop from=$rslist key=$key value=$value -->
+<tr>
+	<td class="center">{$value.id}</td>
+	<td>{$value.user}</td>
+	<td id="email_{$value.id}">{$value.email}</td>
+	<td id="mobile_{$value.id}">{$value.mobile}</td>
+	<td><input type="button" value="选择" onclick="add_input('{$value.id}')" class="layui-btn" /></td>
+</tr>
+<!-- /loop -->
+</table>
+<!-- include tpl=pagelist -->
+<!-- inc:foot_open -->

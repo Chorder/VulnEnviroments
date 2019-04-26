@@ -1,0 +1,34 @@
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " id="">
+	<ul class="am-navbar-nav am-cf am-avg-sm-4">
+		<li>
+			<a href="{$sys.url}"> <span class="am-icon-home"></span> <span class="am-navbar-label">首页</span>
+			</a>
+		</li>
+		<!-- php:$contactus = phpok('contactus') -->
+		<!-- if $contactus.tel -->
+		<li>
+			<a href="tel:{$contactus.tel}"> <span class="am-icon-phone"></span> <span class="am-navbar-label">电话</span>
+			</a>
+		</li>
+		<!-- /if -->
+		<li>
+			<div class="cart">
+			<a href="{url ctrl=cart/}"> <i class="am-icon-shopping-cart"></i> <span class="am-navbar-label">购物车 <span id="head_cart_num">0</span></span></a>
+			</div>
+		</li>
+		<!-- if $session.user_id -->
+		<li>
+			<a href="{url ctrl=usercp/}"> <i class="am-icon-user"></i> <span class="am-navbar-label">会员</span></a>
+		</li>
+		<!-- else -->
+		<li>
+			<a href="{url ctrl=login/}"> <i class="am-icon-paper-plane"></i> <span class="am-navbar-label">登录</span></a>
+		</li>
+		<!-- /if -->
+		<li>
+			<a href="{url ctrl=search/}"> <i class="am-icon-search"></i> <span class="am-navbar-label">搜索</span></a>
+		</li>
+	</ul>
+</div>
+
+<!-- include tpl=footer -->

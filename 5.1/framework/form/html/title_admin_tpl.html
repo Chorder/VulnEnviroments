@@ -1,0 +1,79 @@
+<!-- if $_rs.is_multiple -->
+<script type="text/javascript">
+function action_{$_rs.identifier}_show()
+{
+	var tmp_id = $("#{$_rs.identifier}").val();
+	if(!tmp_id || tmp_id == '0' || tmp_id == 'undefined'){
+		return true;
+	}
+	var url = get_url("inp")+"&type=title&content="+$.str.encode(tmp_id);
+	$.phpok.json(url,function(rs){
+		if(rs.status == 'ok'){
+			var lst = rs.content;
+			var c = '<table>';
+			for(var i in lst){
+				c += '<tr id="{$_rs.identifier}_div_'+lst[i]['id']+'">';
+				c += '<td><input type="checkbox" value="'+lst[i]['id']+'" id="title_{$_rs.identifier}_'+i+'"></td>';
+				c += '<td><label for="title_{$_rs.identifier}_'+i+'">'+lst[i]['title']+'</label></td>';
+				c += '<td style="width:80px;"><input type="button" value="删除" class="layui-btn" onclick="phpok_title_delete(\'{$_rs.identifier}\',\''+lst[i]['id']+'\')" /></td>';
+				c += '</tr>';
+			}
+			c += '</table>';
+			$("#{$_rs.identifier}_div").html(c).show();
+			$("#{$_rs.identifier}_button_checkbox").show();
+		}
+	});
+}
+</script>
+<input type="hidden" name="{$_rs.identifier}" id="{$_rs.identifier}" value="{if $_rs.content && is_array($_rs.content)}{func implode , $_rs.content}{/if}" />
+<div class="button-group">
+	<input type="button" value="{lang请选择}" onclick="phpok_title_select('{$_project_id_btn}',true,'{$_open_title}','{$_rs.identifier}')" class="layui-btn" />
+	<span class="hide" id="{$_rs.identifier}_button_checkbox">
+		<input type="button" class="layui-btn" value="全选" onclick="$.input.checkbox_all('{$_rs.identifier}_div')" />
+		<input type="button" class="layui-btn" value="全不选" onclick="$.input.checkbox_none('{$_rs.identifier}_div')" />
+		<input type="button" class="layui-btn" value="反选" onclick="$.input.checkbox_anti('{$_rs.identifier}_div')" />
+		<input type="button" class="layui-btn" value="删除选中" onclick="phpok_title_delete('{$_rs.identifier}')" />
+	</span>
+</div>
+<div id="{$_rs.identifier}_div" class="hide"></div>
+<!-- else -->
+<script type="text/javascript">
+function action_{$_rs.identifier}_show()
+{
+	var tmp_id = $("#{$_rs.identifier}").val();
+	if(!tmp_id || tmp_id == '0' || tmp_id == 'undefined'){
+		$("#layui-btn-{$_rs.identifier}-delete").hide();
+		$("#title_{$_rs.identifier}").html('').hide();
+		return true;
+	}
+	var url = get_url("inp","",'type=title&content='+$.str.encode(tmp_id));
+	$.phpok.json(url,function(rs){
+		if(rs.status == 'ok'){
+			var lst = rs.content;
+			for(var i in lst){
+				$("#title_{$_rs.identifier}").html(lst[i]['title']).show();
+				$("#layui-btn-{$_rs.identifier}-delete").show();
+			}
+		}
+	})
+}
+</script>
+<input type="hidden" name="{$_rs.identifier}" id="{$_rs.identifier}" value="{if $_rs.content && is_array($_rs.content)}{func implode , $_rs.content}{else}{$_rs.content}{/if}" />
+<table>
+<tr>
+	<td id="title_{$_rs.identifier}"></td>
+	<td width="200px">
+		<div class="button-group">
+			<input type="button" value="请选择" class="layui-btn" onclick="phpok_title_select('{$_project_id_btn}',false,'{$_open_title}','{$_rs.identifier}')" />
+			<input type="button" value="删除" onclick="phpok_title_delete_single('{$_rs.identifier}')" id="layui-btn-{$_rs.identifier}-delete" class="layui-btn" />
+		</div>
+	</td>
+</tr>
+</table>
+<!-- /if -->
+<script type="text/javascript">
+$(document).ready(function(){
+	action_{$_rs.identifier}_show();
+	$.dialog.data("title_data_{$_rs.identifier}",$("#{$_rs.identifier}").val());
+});
+</script>

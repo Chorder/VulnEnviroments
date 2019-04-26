@@ -1,0 +1,31 @@
+<!-- include tpl=head_open -->
+<form method="post" id="post_save" onsubmit="return false">
+<div class="table">
+	<div class="title">
+		{lang管理员账号}
+		<span class="note">{lang请慎用修改管理员账号，修改后要求重新登录}</span>
+	</div>
+	<div class="content">
+		<input type="text" id="name" name="name" class="w99" value="{$rs.account}" />
+	</div>
+</div>
+<div class="table">
+	<div class="title">
+		{lang管理员姓名}
+		<span class="note">{lang请填写管理员的姓名，姓名为空时使用账号作姓名}</span>
+	</div>
+	<div class="content">
+		<input type="text" id="fullname" name="fullname" class="w99" value="{$rs.fullname}" />
+	</div>
+</div>
+<div class="table">
+	<div class="title">
+		{lang邮箱}
+		<span class="note">{lang用于接收邮件通知，不设置表示不接收邮件通知，建议您设置有效的邮箱}</span>
+	</div>
+	<div class="content">
+		<input type="text" id="email" name="email" class="w99" value="{$rs.email}" />
+	</div>
+</div>
+</form>
+<!-- include tpl=foot_open -->

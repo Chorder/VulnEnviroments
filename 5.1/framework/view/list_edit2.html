@@ -1,0 +1,28 @@
+<!-- include tpl=head_lay -->
+<div class="layui-card">
+	<div class="layui-card-body">
+		<form method="post" id="_listedit" class="layui-form" onsubmit="return $.admin_list.single_save()">
+		<input type="hidden" name="id" id="id" value="{$id}" />
+		<input type="hidden" name="pid" id="project_id" value="{$pid}" />
+		<!-- loop from=$extlist key=$key value=$value id=$tmpid -->
+		<div class="layui-form-item">
+			<label class="layui-form-label">
+				<!-- if $value.note -->
+				<i class="layui-icon layui-tips" lay-tips="{$value.note}">&#xe702;</i>
+				<!-- /if -->
+				{$value.title}
+			</label>
+			<div class="layui-input-block">{$value.html}</div>
+		</div>
+		<!-- /loop -->
+		<div class="layui-form-item">
+			<label class="layui-form-label">&nbsp;</label>
+			<div class="layui-input-inline default-auto">
+				<input type="submit" value="{lang提交保存}" class="layui-btn layui-btn-danger" />
+			</div>
+			<div class="layui-input-inline auto gray"></div>
+		</div>
+		</form>
+	</div>
+</div>
+<!-- include tpl=foot_lay -->

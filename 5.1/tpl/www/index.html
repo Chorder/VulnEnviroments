@@ -1,0 +1,93 @@
+<!-- include tpl=head highlight=1 -->
+<!-- php:$list = phpok('picplayer') -->
+<!-- if $list.total -->
+<div class="banner">
+	<div class="bd">
+		<ul>
+			<!-- loop from=$list.rslist key=$key value=$value -->
+			<li><a href="{$value.link}" target="{$value.target}" title="{$value.title}"><img src="{#images#}/blank.gif" _src="{$value.pic.filename}" alt="{$value.title}" /></a></li>
+			<!-- /loop -->
+		</ul>
+	</div>
+	<div class="hd">
+		<ul>
+			<!-- loop from=$list.rslist key=$key value=$value id=tmpid -->
+			<li>{$tmpid.num}</li>
+			<!-- /loop -->
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".banner").slide({'autoPlay':true,'switchLoad':'_src','mainCell':'.bd ul'});
+});
+</script>
+<!-- /if -->
+<section class="main" style="margin:10px auto;">
+	<div class="am-g am-g-collapse">
+		<div class="am-u-lg-3">
+			<!-- php:$list = phpok('news') -->
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">
+					<h3 class="am-panel-title">{$list.project.title}<a href="{$list.project.url}" class="more">更多 <span class="am-icon-angle-right"></span><span class="am-icon-angle-right"></span></a></h3>
+				</div>
+				<div class="am-panel-bd">
+					<ul class="am-list arclist">
+						<!-- loop from=$list.rslist key=$key value=$value id=$tmpid -->
+						<li class="am-g am-list-item-dated">
+							<a href="{$value.url}" title="{$value.title}" class="am-list-item-hd ">{$value.title}</a><span class="am-list-date">{func date Y-m-d $value.dateline}</span>
+						</li>
+						<!-- /loop -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- php:$about = phpok('aboutus') -->
+		<div class="am-u-lg-6 index-about" style="padding-left:0.5em;padding-right:.5em;">
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">
+					<h3 class="am-panel-title">{$about.title}<a href="{$about.url}" class="more">更多 <span class="am-icon-angle-right"></span><span class="am-icon-angle-right"></span></a></h3>
+				</div>
+				<div class="am-panel-bd clearfix">
+					<img src="{$about.pic}" class="thumb" alt="{$about.title}" />{$about.note}
+				</div>
+			</div>
+		</div>
+		<div class="am-u-lg-3">
+			<!-- include tpl=block/contact showmore=true -->
+		</div>
+	</div>
+	<!-- php:$list = phpok('new_products') -->
+	<div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+		<h2 class="am-titlebar-title ">{$list.project.title}</h2>
+		<nav class="am-titlebar-nav"><a href="{$list.project.url}">更多 <span class="am-icon-angle-right"></span><span class="am-icon-angle-right"></span></a></nav>
+	</div>
+	<ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-5 am-gallery-bordered products">
+		<!-- loop from=$list.rslist key=$key value=$value -->
+		<li>
+			<div class="am-gallery-item">
+				<a href="{$value.url}" title="{$value.title}">
+					<img src="{$value.thumb.gd.thumb}" alt="{$value.title}" />
+					<!-- if $value.apps && $value.apps.coupon --><div class="discount"><img src="{$value.apps.coupon.rs.pic1}" /></div><!-- /if -->
+					<h3 class="am-gallery-title">{$value.title}</h3>
+					<!-- if $list.project.is_biz --><div class="am-gallery-desc red">{func price_format $value.price $value.currency_id}</div><!-- /if -->
+				</a>
+			</div>
+		</li>
+		<!-- /loop -->
+	</ul>
+	<!-- php:$list = phpok('link') -->
+	<div class="am-panel am-panel-default mt10">
+		<div class="am-panel-hd">
+			<h3 class="am-panel-title">{$list.project.title}</h3>
+		</div>
+		
+		<div class="am-panel-bd link">
+			<!-- loop from=$list.rslist key=$key value=$value -->
+			<a href="{$value.linkurl}" target="{$value.target}" title="{$value.sitename}">{$value.sitename}</a>
+			<!-- /loop -->
+		</div>
+	</div>
+</section>
+
+<!-- include tpl=foot -->
