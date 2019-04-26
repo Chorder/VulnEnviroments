@@ -1,9 +1,10 @@
-# oscommerce-2.3.4.1-command-execution
+# oscommerce 2.3.4.1 命令执行漏洞
 
-# MySQL:
+## 配置信息
 
-host: localhost 
-port: 3306
-user: test
-password: test
-database: test
+MySQL:
+- host: localhost 
+- port: 3306
+- username: test
+- password: test
+- database: test
