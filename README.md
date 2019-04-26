@@ -3,6 +3,7 @@
 ## 关于本仓库
 
 本仓库不定期更新，包含常见的漏洞环境。
+
 本仓库由Docker同步自动构建，Docker镜像地址位于：[https://cloud.docker.com/repository/docker/chorder/vulns](https://cloud.docker.com/repository/docker/chorder/vulns)
 
 ## 如何使用
@@ -58,3 +59,29 @@ Digest: sha256:e21558a28b223148eb3900135fdb2bb225f8084f961d8d0688f36fae1d310c12
 Status: Downloaded newer image for chorder/vulns:env-DVWA
 root@aliyun-deb:~/VulnEnviroments# 
 ```
+
+
+## 如何贡献 (估计没人)
+
+首先fork本仓库并克隆你自己fork过去的仓库，在仓库中创建新的分支。漏洞环境请以env-开头，例如**env-CVE-XXXX-XXXX**
+
+在本地构建好Docker工程并测试通过以后，push到github并创建PR即可。
+
+PR审核通过后即可自动化构建。
+
+
+## 为什么要做这个仓库？
+
+作为一个时常需要搭建漏洞环境的人，我深知大家都有这个需求。本着开放、分享、互助的精神，与其每个人都花费精力在这些简单却又重复的事情上，
+不如大家一起做一些让同在安全一线搬砖的兄弟们都能感受到生活美好的事情。让漏洞环境一处搭建，多处受益。
+
+---
+Chorder
+2019年4月26日
+
+
+
+
+
+
+
