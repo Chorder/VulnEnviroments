@@ -1,5 +1,5 @@
 FROM debian
-MAINTAINER Chorder
+MAINTAINER chorder
 WORKDIR /root/
 #ADD sources.list /etc/apt/
 RUN apt-get update
