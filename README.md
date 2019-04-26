@@ -4,7 +4,7 @@
 
 本仓库不定期更新，包含常见的漏洞环境。
 
-本仓库由Docker同步自动构建，Docker镜像地址位于：[https://cloud.docker.com/repository/docker/chorder/vulns](https://cloud.docker.com/repository/docker/chorder/vulns)
+由Docker同步自动构建，Docker镜像地址位于：[https://hub.docker.com/r/chorder/vulns](https://hub.docker.com/r/chorder/vulns)
 
 ## 如何使用
 
