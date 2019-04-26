@@ -16,5 +16,5 @@ ADD mysql_init.sh /
 RUN chmod 777 -R /var/www/DVWA-master
 RUN chmod +x /start.sh
 RUN chmod +x /mysql_init.sh
-ENTRYPOINT /start.sh 
+ENTRYPOINT /start.sh && bash
 EXPOSE 80
