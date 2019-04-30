@@ -3,6 +3,7 @@
 ## 关于本仓库
 
 本仓库不定期更新，包含常见的漏洞环境。
+[漏洞环境列表](./EnviromentLists.md)
 
 由Docker同步自动构建，Docker镜像地址位于：[https://hub.docker.com/r/chorder/vulns](https://hub.docker.com/r/chorder/vulns)
 
@@ -33,31 +34,31 @@ root@aliyun-deb:~/VulnEnviroments# git branch -r
   origin/HEAD -> origin/master
   origin/env-DVWA
   origin/master
-root@aliyun-deb:~/VulnEnviroments# git checkout env-DVWA 
+root@aliyun-deb:~/VulnEnviroments# git checkout env-DVWA
 Branch env-DVWA set up to track remote branch env-DVWA from origin.
 Switched to a new branch 'env-DVWA'
 root@aliyun-deb:~/VulnEnviroments# ls
 Dockerfile  dvwa.conf  DVWA-master.zip  mysql_init.sh  README.md  sources.list  start.sh
 root@aliyun-deb:~/VulnEnviroments# docker pull chorder/vulns:env-DVWA
 env-DVWA: Pulling from chorder/vulns
-e79bb959ec00: Pull complete 
-1c19439741a1: Pull complete 
-9d0b9970aba5: Pull complete 
-236a2aa66421: Pull complete 
-2541b2af94cd: Pull complete 
-052aed59bbfb: Pull complete 
-e6c58a89eb07: Pull complete 
-0da5bfe70119: Pull complete 
-46f57ef72ad0: Pull complete 
-1445944f09ce: Pull complete 
-b850cc06de67: Pull complete 
-ecaaadbcce9b: Pull complete 
-0c54343d2152: Pull complete 
-bba4baa45b56: Pull complete 
-24ce9ad29bf7: Pull complete 
+e79bb959ec00: Pull complete
+1c19439741a1: Pull complete
+9d0b9970aba5: Pull complete
+236a2aa66421: Pull complete
+2541b2af94cd: Pull complete
+052aed59bbfb: Pull complete
+e6c58a89eb07: Pull complete
+0da5bfe70119: Pull complete
+46f57ef72ad0: Pull complete
+1445944f09ce: Pull complete
+b850cc06de67: Pull complete
+ecaaadbcce9b: Pull complete
+0c54343d2152: Pull complete
+bba4baa45b56: Pull complete
+24ce9ad29bf7: Pull complete
 Digest: sha256:e21558a28b223148eb3900135fdb2bb225f8084f961d8d0688f36fae1d310c12
 Status: Downloaded newer image for chorder/vulns:env-DVWA
-root@aliyun-deb:~/VulnEnviroments# 
+root@aliyun-deb:~/VulnEnviroments#
 ```
 
 
@@ -78,10 +79,3 @@ PR审核通过后即可自动化构建。
 ---
 Chorder
 2019年4月26日
-
-
-
-
-
-
-
