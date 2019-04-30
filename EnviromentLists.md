@@ -1,5 +1,7 @@
 ## 漏洞环境列表（持续更新中）
 
+- env-lamp
+  - 一个标准的LAMP环境，可以基于该镜像构建常见LAMP环境下的漏洞
 - env-DVWA
   - DVWA漏洞演示环境
 - env-dvws
