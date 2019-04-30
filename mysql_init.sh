@@ -1,4 +1,4 @@
-mysql -e "create database dvwa;"
-mysql -e "grant all privileges on dvwa.* to dvwa identified by 'p@ssw0rd';"
+mysql -e "create database dvws"
+mysql -e "grant all privileges on dvws.* to dvws identified by 'dvws'"
 mysql -e "flush privileges"
 
