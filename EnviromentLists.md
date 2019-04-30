@@ -1,7 +1,9 @@
 ## 漏洞环境列表（持续更新中）
 
 - env-DVWA
-    - DVWA演示环境
+  - DVWA漏洞演示环境
+- env-dvws
+  - dvws漏洞演示环境
 - env-cnvd-c-2019-48814
   - CNVD-C-2019-48814漏洞演示环境
 - env-oscommerce-2.3.4.1-command-execution
